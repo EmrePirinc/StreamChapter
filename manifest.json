@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Stream Video Bölümleyici",
+  "version": "1.0.0",
+  "description": "Microsoft Stream videolarına otomatik bölüm ekleme aracı",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://*.sharepoint.com/*",
+    "https://*.microsoftstream.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}

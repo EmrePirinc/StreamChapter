@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stream Bölümleyici</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📹 Stream Bölümleyici</h1>
+      <p class="subtitle">Microsoft Stream Video Bölüm Ekleme Aracı</p>
+    </header>
+
+    <div class="section">
+      <label for="jsonInput">Bölüm Listesi (JSON):</label>
+      <textarea id="jsonInput" placeholder='[
+  { "time": "00:00:00", "title": "Giriş" },
+  { "time": "00:05:30", "title": "Ana Konu" }
+]'></textarea>
+      <div class="json-actions">
+        <button id="validateBtn" class="btn-secondary">✓ Doğrula</button>
+        <button id="clearBtn" class="btn-secondary">🗑 Temizle</button>
+        <button id="loadSampleBtn" class="btn-secondary">📋 Örnek</button>
+      </div>
+      <div id="validationResult" class="validation-result"></div>
+    </div>
+
+    <div class="section settings">
+      <h3>⚙️ Hız Ayarları</h3>
+      <div class="setting-row">
+        <label for="videoSeekDelay">Video Sarma Bekleme:</label>
+        <div class="input-group">
+          <input type="number" id="videoSeekDelay" value="2500" min="500" max="10000" step="100">
+          <span class="unit">ms</span>
+        </div>
+      </div>
+      <div class="setting-row">
+        <label for="buttonClickDelay">Buton Tıklama Bekleme:</label>
+        <div class="input-group">
+          <input type="number" id="buttonClickDelay" value="1500" min="500" max="10000" step="100">
+          <span class="unit">ms</span>
+        </div>
+      </div>
+      <div class="setting-row">
+        <label for="saveDelay">Kaydetme Sonrası Bekleme:</label>
+        <div class="input-group">
+          <input type="number" id="saveDelay" value="2000" min="500" max="10000" step="100">
+          <span class="unit">ms</span>
+        </div>
+      </div>
+      <div class="preset-buttons">
+        <button class="preset-btn" data-speed="fast">🚀 Hızlı</button>
+        <button class="preset-btn" data-speed="normal">⚡ Normal</button>
+        <button class="preset-btn" data-speed="slow">🐢 Yavaş</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <button id="startBtn" class="btn-primary">▶️ Bölümlendirmeyi Başlat</button>
+      <button id="stopBtn" class="btn-danger" style="display:none;">⏹ Durdur</button>
+    </div>
+
+    <div id="progressSection" class="section progress-section" style="display:none;">
+      <h3>📊 İlerleme Durumu</h3>
+      <div class="progress-bar">
+        <div id="progressFill" class="progress-fill"></div>
+      </div>
+      <div id="progressText" class="progress-text">0 / 0</div>
+      <div id="currentChapter" class="current-chapter"></div>
+      <div id="logContainer" class="log-container"></div>
+    </div>
+
+    <div class="section info-section">
+      <details>
+        <summary>ℹ️ Kullanım Kılavuzu</summary>
+        <ol>
+          <li>Microsoft Stream video düzenleme sayfasını açın</li>
+          <li>JSON formatında bölüm listesini yapıştırın</li>
+          <li>Hız ayarlarını ihtiyacınıza göre düzenleyin</li>
+          <li>"Bölümlendirmeyi Başlat" butonuna tıklayın</li>
+          <li>Başka sekmeye geçebilirsiniz, işlem arka planda devam eder</li>
+        </ol>
+        <p class="warning">⚠️ Zaman formatı: HH:MM:SS (Saat:Dakika:Saniye)</p>
+      </details>
+    </div>
+
+    <footer>
+      <p>v1.0.0 | Aif Bilişim</p>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
