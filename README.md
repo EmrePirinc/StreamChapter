@@ -81,4 +81,4 @@ MIT License
 
 ---
 
-**Aif Bilişim** tarafından geliştirilmiştir.
+
